@@ -1,0 +1,11 @@
+\\Mac\Home\Documents\GitHub\Genermeier\Genermeier\Genermeier\bin\Debug\Genermeier.exe.config
+\\Mac\Home\Documents\GitHub\Genermeier\Genermeier\Genermeier\bin\Debug\Genermeier.exe
+\\Mac\Home\Documents\GitHub\Genermeier\Genermeier\Genermeier\bin\Debug\Genermeier.pdb
+\\Mac\Home\Documents\GitHub\Genermeier\Genermeier\Genermeier\bin\Debug\HtmlAgilityPack.dll
+\\Mac\Home\Documents\GitHub\Genermeier\Genermeier\Genermeier\bin\Debug\HtmlAgilityPack.pdb
+\\Mac\Home\Documents\GitHub\Genermeier\Genermeier\Genermeier\bin\Debug\HtmlAgilityPack.xml
+\\Mac\Home\Documents\GitHub\Genermeier\Genermeier\Genermeier\obj\Debug\Genermeier.csprojAssemblyReference.cache
+\\Mac\Home\Documents\GitHub\Genermeier\Genermeier\Genermeier\obj\Debug\Genermeier.csproj.CoreCompileInputs.cache
+\\Mac\Home\Documents\GitHub\Genermeier\Genermeier\Genermeier\obj\Debug\Genermeier.csproj.CopyComplete
+\\Mac\Home\Documents\GitHub\Genermeier\Genermeier\Genermeier\obj\Debug\Genermeier.exe
+\\Mac\Home\Documents\GitHub\Genermeier\Genermeier\Genermeier\obj\Debug\Genermeier.pdb
