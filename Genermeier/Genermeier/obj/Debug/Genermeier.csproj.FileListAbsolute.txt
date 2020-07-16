@@ -1,0 +1,6 @@
+C:\Users\alain\Documents\GitHub\Nerovia\Genermeier\Genermeier\Genermeier\bin\Debug\Genermeier.exe.config
+C:\Users\alain\Documents\GitHub\Nerovia\Genermeier\Genermeier\Genermeier\bin\Debug\Genermeier.exe
+C:\Users\alain\Documents\GitHub\Nerovia\Genermeier\Genermeier\Genermeier\bin\Debug\Genermeier.pdb
+C:\Users\alain\Documents\GitHub\Nerovia\Genermeier\Genermeier\Genermeier\obj\Debug\Genermeier.csprojAssemblyReference.cache
+C:\Users\alain\Documents\GitHub\Nerovia\Genermeier\Genermeier\Genermeier\obj\Debug\Genermeier.exe
+C:\Users\alain\Documents\GitHub\Nerovia\Genermeier\Genermeier\Genermeier\obj\Debug\Genermeier.pdb
