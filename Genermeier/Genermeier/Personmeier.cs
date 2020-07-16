@@ -13,6 +13,7 @@ namespace Genermeier
         public Personmeier(Personmeier[] parents = null)
         {
             this.parents = parents;
+
         }
 
 
@@ -21,8 +22,8 @@ namespace Genermeier
             if (levels <= 0)
                 return;
 
-            CreatePartners(Random.Next(0, 6));
-            CreateChildren(Random.Next(0, 5));
+            CreatePartners(Random.Next(0, 3));
+            CreateChildren(Random.Next(0, 10));
             if (children != null)
                 foreach(var child in children)
                 {
@@ -61,8 +62,58 @@ namespace Genermeier
                 partners[n] = new Personmeier();
         }
 
-        public string name;
-        public string surname;
+
+        public void PrintTree(List<bool> level = null)
+        {
+
+
+            Console.Write(this.Name);
+            if (this.partners != null)
+            {
+                foreach (var partner in this.partners)
+                {
+                    Console.Write(" & [");
+                    Console.Write(partner.Name);
+                    Console.Write("]");
+                }
+            }
+
+
+            Console.WriteLine();
+            if (this.children != null)
+            {
+                if (level is null)
+                    level = new List<bool> { };
+                else
+                    level.Add(true);
+                foreach (var child in this.children)
+                {
+                    foreach (var l in level)
+                        if (l)
+                            Console.Write(" │ ");
+                        else
+                            Console.Write("   ");
+
+                    if (this.children.Last() == child)
+                    {
+                        Console.Write(" └ ");
+                        if (level.Count > 0)
+                            level[level.Count - 1] = false;
+                    }
+                    else
+                        Console.Write(" ├ ");
+                    child.PrintTree(level);
+                }
+                if (level.Count > 0)
+                    level.RemoveAt(level.Count - 1);
+                //Console.WriteLine();
+            }
+        }
+
+        public string Name { get => firstname + " " + lastname;  }
+
+        public string firstname = "mei";
+        public string lastname = "er";
 
         public Personmeier[] children;
         public Personmeier[] partners;
