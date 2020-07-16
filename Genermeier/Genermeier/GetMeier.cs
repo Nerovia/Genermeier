@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 using HtmlAgilityPack;
@@ -12,9 +13,8 @@ namespace Genermeier
     class GetMeier
     {
 
-        class Networking
+        private class Networking
         {
-
             private WebClient web = new WebClient();
 
             public List<string> dataObjects = new List<string>();
@@ -23,26 +23,50 @@ namespace Genermeier
 
             string FirstNameLinkBase = @"https://www.behindthename.com/names/usage/german";
 
-            string htmlStringSurnames;
+            public string HtmlStringSurnames;
 
-            List<string> htmlStringFirstNames = new List<string>();
+            public List<string> HtmlStringFirstNames = new List<string>();
 
             public Networking()
             {
+                HtmlStringSurnames = web.DownloadString(SurnameLink);
 
-                htmlStringSurnames = web.DownloadString(SurnameLink);
-
-                htmlStringFirstNames.Add(web.DownloadString(FirstNameLinkBase));
+                HtmlStringFirstNames.Add(web.DownloadString(FirstNameLinkBase));
 
                 for (int i = 1; i < 5; i++)
                 {
-                    htmlStringFirstNames.Add(web.DownloadString(FirstNameLinkBase + i.ToString()));
+                    HtmlStringFirstNames.Add(web.DownloadString(FirstNameLinkBase + @"/" + i.ToString()));
                 }
             }
         }
 
-        private class Crawler
+        private class FindMeier
         {
+
+            private static string PatternMeier = @"(\w+meier)";
+            private static string PatternMeierAlt = @"(Meier\w+)";
+
+            public List<string> Meier(string html)
+            {
+
+                List<string> Meiers = new List<string>();
+
+                foreach (System.Text.RegularExpressions.Match m in System.Text.RegularExpressions.Regex.Matches(html, PatternMeier))
+                {
+                    Meiers.Add(m.Groups[1].Value);
+                }
+
+                foreach (System.Text.RegularExpressions.Match m in System.Text.RegularExpressions.Regex.Matches(html, PatternMeierAlt))
+                {
+                    Meiers.Add(m.Groups[1].Value);
+                }
+
+                return Meiers;
+            }
+        }
+
+        private class Crawler {
+
             private static HtmlNode getRootNode(string script)
             {
                 HtmlDocument doc = new HtmlDocument();
@@ -54,58 +78,95 @@ namespace Genermeier
                 return html = doc.DocumentNode.ChildNodes.First(x => x.Name == "html");
             }
 
-            public static List<string> getLinksFromClass(string script, string className)
+            public static List<string> getFirstNames(string html)
             {
 
-                HtmlNode html = getRootNode(script);
+                HtmlNode htmlNode = getRootNode(html);
 
                 List<string> list = new List<string>();
 
-                // for elements in list = @"//div[@uael-post__complete-box-overlay]"
-
-                foreach (HtmlNode node in html.SelectNodes(className))
+                foreach (HtmlNode node in htmlNode.SelectNodes(@"//span[@class='listname']"))
                 {
-                    foreach (HtmlNode l in html.SelectNodes("//a[@href]"))
-                    {
-                        string rawLink = l.Attributes["href"].Value;
-
-                        if (rawLink.Contains(prefix))
-                        {
-                            list.Add(rawLink);
-                        }
-                    }
+                    list.Add(node.InnerText.ToLower().Replace(" (1)", "").Replace(" (2)", "").FirstCharToUpper());
                 }
                 return list;
             }
-
-            // for content of class "elementor-widget-container"
-
-            public static string getStringFromClass(string script, string className)
-            {
-
-                HtmlNode html = getRootNode(script);
-
-                // for content of class "elementor-widget-container"
-
-                HtmlNode node = html.SelectSingleNode(className);
-
-                return node.InnerText;
-            }
-
-            private static string prefix = @"https://www.bernertierschutz.ch/tiere/";
-
         }
 
+
+
+        private Networking Net;
+
+        private FindMeier Find;
+
+        private Random rand = new Random();
+
+        private List<int> usedFirstNames = new List<int>();
+
+        private List<int> usedLastNames = new List<int>();
+
+        private List<string> LastNames;
+
+        private List<string> FirstNames;
 
         public GetMeier()
         {
-                
+            Net = new Networking();
+            Find = new FindMeier();
+
+            LastNames = Find.Meier(Net.HtmlStringSurnames);
+
+            FirstNames = new List<string>();
+
+            foreach (string html in Net.HtmlStringFirstNames)
+            {
+                Crawler.getFirstNames(html).ForEach( x => FirstNames.Add(x));
+            }
         }
 
 
 
+        public string getFirstName()
+        {
+            while (true)
+            {
+                int n = rand.Next(FirstNames.Count - 1);
+
+                if (!usedFirstNames.Contains(n))
+                {
+                    usedFirstNames.Add(n);
+                    return FirstNames[n];
+                }
+            }
+        }
+
+        public string getLastName()
+        {
+            while (true)
+            {
+                int n = rand.Next(LastNames.Count - 1);
+
+                if (!usedLastNames.Contains(n))
+                {
+                    usedLastNames.Add(n);
+                    return LastNames[n];
+                }
+            }
+        }
     }
 }
 
+public static class StringExtensions
+{
+    public static string FirstCharToUpper(this string input)
+    {
+        switch (input)
+        {
+            case null: throw new ArgumentNullException(nameof(input));
+            case "": throw new ArgumentException($"{nameof(input)} cannot be empty", nameof(input));
+            default: return input.First().ToString().ToUpper() + input.Substring(1);
+        }
+    }
+}
 
 
