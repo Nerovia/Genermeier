@@ -131,7 +131,7 @@ namespace Genermeier
             while (true)
             {
                 int n = rand.Next(FirstNames.Count - 1);
-
+                return FirstNames[n];
                 if (!usedFirstNames.Contains(n))
                 {
                     usedFirstNames.Add(n);
@@ -145,7 +145,7 @@ namespace Genermeier
             while (true)
             {
                 int n = rand.Next(LastNames.Count - 1);
-
+                return LastNames[n];
                 if (!usedLastNames.Contains(n))
                 {
                     usedLastNames.Add(n);

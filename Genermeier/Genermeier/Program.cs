@@ -8,33 +8,15 @@ namespace Genermeier
 {
     class Program
     {
-        static void DrawFamily(Personmeier person)
-        {
-            Console.Write("O");
-            // If family is even 
-            for (int n = 0; n < person.partners.Length; n++)
-            {
-                if (person.partners.Length % 2 != 0 && person.partners.Length / 2 == n)
-                    Console.Write("─┬─");
-                else
-                    Console.Write("───");
-                Console.Write("O");
-            }
-        }
 
         static void Main(string[] args)
         {
             var person = new Personmeier();
-            person.Sprout(5);
+            person.Sprout(10);
 
-            DrawFamily(person);
+            person.PrintTree();
 
-            GetMeier mister = new GetMeier();
-
-            for (int i = 1; i < 20; i++)
-            {
-                Console.WriteLine(mister.getFirstName());
-            }
+            while (true);
         }
     }
 }

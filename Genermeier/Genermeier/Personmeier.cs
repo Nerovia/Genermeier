@@ -8,12 +8,14 @@ namespace Genermeier
 {
     public class Personmeier
     {
+        static GetMeier GetMeier = new GetMeier();
         static Random Random = new Random();
 
         public Personmeier(Personmeier[] parents = null)
         {
             this.parents = parents;
-
+            this.firstname = GetMeier.getFirstName();
+            this.lastname = GetMeier.getLastName();
         }
 
 

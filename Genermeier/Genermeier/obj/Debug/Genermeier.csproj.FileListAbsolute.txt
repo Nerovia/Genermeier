@@ -9,3 +9,13 @@
 \\Mac\Home\Documents\GitHub\Genermeier\Genermeier\Genermeier\obj\Debug\Genermeier.csproj.CopyComplete
 \\Mac\Home\Documents\GitHub\Genermeier\Genermeier\Genermeier\obj\Debug\Genermeier.exe
 \\Mac\Home\Documents\GitHub\Genermeier\Genermeier\Genermeier\obj\Debug\Genermeier.pdb
+C:\Users\alain\Documents\GitHub\Nerovia\Genermeier\Genermeier\Genermeier\bin\Debug\Genermeier.exe.config
+C:\Users\alain\Documents\GitHub\Nerovia\Genermeier\Genermeier\Genermeier\bin\Debug\Genermeier.exe
+C:\Users\alain\Documents\GitHub\Nerovia\Genermeier\Genermeier\Genermeier\bin\Debug\Genermeier.pdb
+C:\Users\alain\Documents\GitHub\Nerovia\Genermeier\Genermeier\Genermeier\bin\Debug\HtmlAgilityPack.dll
+C:\Users\alain\Documents\GitHub\Nerovia\Genermeier\Genermeier\Genermeier\bin\Debug\HtmlAgilityPack.pdb
+C:\Users\alain\Documents\GitHub\Nerovia\Genermeier\Genermeier\Genermeier\bin\Debug\HtmlAgilityPack.xml
+C:\Users\alain\Documents\GitHub\Nerovia\Genermeier\Genermeier\Genermeier\obj\Debug\Genermeier.csprojAssemblyReference.cache
+C:\Users\alain\Documents\GitHub\Nerovia\Genermeier\Genermeier\Genermeier\obj\Debug\Genermeier.csproj.CopyComplete
+C:\Users\alain\Documents\GitHub\Nerovia\Genermeier\Genermeier\Genermeier\obj\Debug\Genermeier.exe
+C:\Users\alain\Documents\GitHub\Nerovia\Genermeier\Genermeier\Genermeier\obj\Debug\Genermeier.pdb
